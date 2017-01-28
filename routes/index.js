@@ -6,7 +6,18 @@ const List = require('../models/list.js');
 const Task = require('../models/task.js');
 
 router.get('/', (req, res, next) => {
-    res.render('index', { lists, tasks });
+    let findingLists = List.findAll();
+    let findingTasks = Task.findAll();
+    
+    Promise.all([findingLists, findingTasks])
+        .then((data) => {
+            let lists = data[0];
+            let tasks = tasks[1];
+            res.render('index', { lists, tasks });
+        })
+        .catch((err) => {
+        console.error((err))
+        });
 });
 
 module.exports(router);
