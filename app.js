@@ -6,7 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const volleyball = require('volleyball');
 const nunjucks = require('nunjucks');
-const PORT = 2017;
+const PORT = 3000;
 
 //our modules
 const db = require('./models/db');
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // error handling
 app.use((req, res, next) => {
     let error = new Error("EVERYTHING BROKE YOU DUMMY");
-    err.status = 404;
+    error.status = 404;
     next(error);
 });
 //error handling function
@@ -48,8 +48,8 @@ app.use((err, req, res, next) => {
 //sync db if all is well
 db.sync()
     .then(() => {
-        app.listen(PORT, function () {
-            console.log(`Rocking out on port: localhost/${PORT}`);
+        app.listen(3001, function () {
+            console.log(`Rocking out on port: localhost/${3000}`);
         })
     })
     .catch((err) => {

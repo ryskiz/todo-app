@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
     Promise.all([findingLists, findingTasks])
         .then((data) => {
             let lists = data[0];
-            let tasks = tasks[1];
+            let tasks = data[1];
             res.render('index', { lists, tasks });
         })
         .catch((err) => {
@@ -20,4 +20,4 @@ router.get('/', (req, res, next) => {
         });
 });
 
-module.exports(router);
+module.exports = router;
