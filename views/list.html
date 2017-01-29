@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{list.listName}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST" action="/list/{{list.id}}">
+                <div class="form-group">
+                    <label for="task">New Task</label>
+                    <input name="task" type="text" class="form-control" id="exampleLis1" placeholder="Enter new task">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        {% for task in tasks %}
+        <div class="col-md-4">
+            <h1>{{task.name}}</h1>
+            <h2>{{task.completed}}</h2>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

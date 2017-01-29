@@ -2,15 +2,37 @@
 
 {% block content %}
 
-<h1> You have reached the threshold </h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Todo App</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="POST" action="/">
+                <div class="form-group">
+                    <label for="list">New List</label>
+                    <input name="list" type="text" class="form-control" id="exampleLis1" placeholder="Enter new list name">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        {% for list in lists %}
+        <div class="col-md-4">
+            <div class="card w-50">
+                <div class="card-block" id="{{list.listName}}">
+                    <h3 class="card-title">{{list.listName}}</h3>
+                    <a href="/list/{{list.id}}" class="btn btn-primary">Add Task</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
 
-<!--{% for list in lists %}-->
-<!--<h2>{{list.listName}}</h2>-->
-<!--{% endfor %}-->
-
-<!--{% for task in tasks %}-->
-<!--<h5>{{task.name}}</h5>-->
-<!--{% endfor %}-->
+</div>
 
 {% endblock %}

@@ -10,7 +10,7 @@ const PORT = 3000;
 
 //our modules
 const db = require('./models/db');
-const routes = require('./routes/');
+const routes = require('./routes/index');
 
 //app
 const app = express();
@@ -29,8 +29,11 @@ app.use(bodyParser.json());
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/css', express.static(__dirname + '/public/stylesheets/'));
-app.use('/', routes);
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/list', require('./routes/list'));
+
+app.use('/', routes);
 
 // error handling
 app.use((req, res, next) => {
